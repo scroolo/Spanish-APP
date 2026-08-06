@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "buildCommand": "npm run build --workspace @spanish/shared && npm run build:vercel --workspace @spanish/backend",
   "functions": {
     "api/index.ts": {
       "maxDuration": 30,
