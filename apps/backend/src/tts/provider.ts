@@ -11,7 +11,9 @@ export function getTTSProvider(): TTSProvider {
   const kind = config.tts.provider;
   if (kind === 'openai' || kind === 'elevenlabs') {
     if (!config.tts.apiKey) {
-      throw new Error(`${kind} TTS vyžaduje nastavené TTS_API_KEY.`);
+      console.warn(`TTS_PROVIDER=${kind} bez TTS_API_KEY – používa sa mock.`);
+      instance = new MockTTSProvider();
+      return instance;
     }
     instance = new OpenAITTSProvider({
       apiKey: config.tts.apiKey,

@@ -11,7 +11,9 @@ export function getAIProvider(): AIProvider {
   const kind = config.ai.provider;
   if (kind === 'openai') {
     if (!config.ai.apiKey) {
-      throw new Error('AI_PROVIDER=openai vyžaduje nastavené AI_API_KEY.');
+      console.warn(`AI_PROVIDER=openai bez AI_API_KEY – používa sa mock.`);
+      instance = new MockAIProvider();
+      return instance;
     }
     instance = new OpenAIProvider({
       apiKey: config.ai.apiKey,

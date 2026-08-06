@@ -11,7 +11,9 @@ export function getSttProvider(): SpeechToTextProvider {
   const kind = config.stt.provider;
   if (kind === 'openai') {
     if (!config.stt.apiKey) {
-      throw new Error('openai STT vyžaduje nastavené STT_API_KEY.');
+      console.warn(`STT_PROVIDER=openai bez STT_API_KEY – používa sa mock.`);
+      instance = new MockSttProvider();
+      return instance;
     }
     instance = new OpenAISTTProvider({
       name: 'openai',
@@ -23,7 +25,9 @@ export function getSttProvider(): SpeechToTextProvider {
     });
   } else if (kind === 'groq') {
     if (!config.stt.groqApiKey) {
-      throw new Error('groq STT vyžaduje nastavené GROQ_API_KEY.');
+      console.warn(`STT_PROVIDER=groq bez GROQ_API_KEY — používa sa mock.`);
+      instance = new MockSttProvider();
+      return instance;
     }
     instance = new OpenAISTTProvider({
       name: 'groq',
