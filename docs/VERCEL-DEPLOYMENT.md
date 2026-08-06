@@ -119,23 +119,16 @@ cd apps/backend
 npx vercel --prod          # zistí rootDirectory/build z vercel.json
 ```
 
-Po nasadení (reálna URL od Vercel):
+### Stav (2026-08-06): nasadené na produkcii
 
-```bash
-# Lokálne smoke testy proti produkcii (bez AI/STT hovorov):
-npm run smoke:production --workspace @spanish/backend \
-  -- --url https://<app>.vercel.app
-
-# S AI/STT endpointmi (volá Groq/OpenAI → platí):
-npm run smoke:production --workspace @spanish/backend \
-  -- --url https://<app>.vercel.app --with-ai
-```
-
-Smoke test overí: `/health`, `/api/health`, 401 bez tokenu, register,
-onboarding, summary, lesson, progress, curriculum, login, speaking history.
-
-Ručné overenie z telefónu: otvor `https://<app>.vercel.app/health` →
-`{"status":"ok"}`.
+Backend je živý na **https://spanish-appk.vercel.app** (projekt `projekto/spanish-appk`,
+Root Directory `apps/backend`, env vars nastavené cez CLI). Smoke test
+(`smoke:production`) prešiel **11/11** krokmi: /health, /api/health, 401 bez
+tokenu, register, onboarding, summary, lesson, progress, curriculum, login,
+speaking history. AI/STT/TTS bežia v režime `mock` (bez kľúčov); reálne
+kľúče sa pridajú cez env vars (`GROQ_API_KEY` pre STT atď.) bez zmeny kódu —
+provider bez kľúča automaticky prepadne na mock, takže API nikdy nespadne na
+missing kľúči.
 
 ## 7. Prepojenie s APK
 

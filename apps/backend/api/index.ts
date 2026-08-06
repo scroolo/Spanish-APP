@@ -48,7 +48,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.statusCode = 500;
     res.setHeader('Content-Type', 'application/json');
     res.send(
-      JSON.stringify({ error: { code: 'INTERNAL', message: String(err instanceof Error ? err.stack : err) } }),
+      JSON.stringify({
+        error: {
+          code: 'INTERNAL',
+          message: process.env.NODE_ENV === 'production' ? 'Internal server error' : String(err instanceof Error ? err.stack : err),
+        },
+      }),
     );
   }
 }

@@ -41,3 +41,5 @@ coverage/
 # TTS cache (generated audio)
 apps/backend/media/
 apps/backend/.env
+
+.env*
