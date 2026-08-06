@@ -8,5 +8,6 @@
       "memory": 1024
     }
   },
-  "rewrites": [{ "source": "/(.*)", "destination": "/api/index.ts" }]
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/index.ts" }],
+  "framework": null
 }
