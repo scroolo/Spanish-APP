@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "npm run build --workspace @spanish/shared && tsc -p tsconfig.json",
+    "typecheck": "npm run build --workspace @spanish/shared && tsc -p tsconfig.json --noEmit",
     "typecheck:vercel": "tsc -p tsconfig.vercel.json --noEmit",
     "build:vercel": "npm run typecheck:vercel && npm run build",
     "test": "vitest run",
