@@ -1,0 +1,2 @@
+ALTER TABLE "mistakes" ADD COLUMN "generated_exercise_id" uuid;--> statement-breakpoint
+ALTER TABLE "mistakes" ADD CONSTRAINT "mistakes_generated_exercise_id_generated_exercises_id_fk" FOREIGN KEY ("generated_exercise_id") REFERENCES "public"."generated_exercises"("id") ON DELETE set null ON UPDATE no action;

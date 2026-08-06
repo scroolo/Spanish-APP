@@ -1,0 +1,43 @@
+{
+  "name": "@spanish/backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "typecheck:vercel": "tsc -p tsconfig.vercel.json --noEmit",
+    "build:vercel": "npm run typecheck:vercel && npm run build",
+    "test": "vitest run",
+    "e2e": "tsx src/scripts/e2e.ts",
+    "smoke:production": "tsx src/scripts/smoke-production.ts",
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate",
+    "db:seed": "tsx src/db/seed.ts",
+    "db:reset": "tsx src/db/reset.ts"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.0",
+    "@fastify/jwt": "^9.0.0",
+    "@vercel/blob": "^2.7.0",
+    "bcryptjs": "^3.0.0",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.44.0",
+    "fastify": "^5.0.0",
+    "pg": "^8.13.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@spanish/shared": "*",
+    "@types/node": "^22.10.0",
+    "@types/pg": "^8.11.0",
+    "@vercel/node": "^5.9.5",
+    "drizzle-kit": "^0.31.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

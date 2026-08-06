@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-vercel/
+build/
+.expo/
+.expo-shared/
+web-build/
+
+# Env files (secrets)
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Expo / RN
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# TTS cache (generated audio)
+apps/backend/media/
+apps/backend/.env

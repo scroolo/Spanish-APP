@@ -1,0 +1,22 @@
+# PostgreSQL for local development
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: spanish-teacher-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: spanish
+      POSTGRES_PASSWORD: spanish
+      POSTGRES_DB: spanishteacher
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U spanish -d spanishteacher"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  db-data:

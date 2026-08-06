@@ -1,0 +1,20 @@
+{
+  "name": "spanish-teacher",
+  "private": true,
+  "version": "0.1.0",
+  "description": "AI Spanish Teacher — adaptive language learning platform",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "backend": "npm run dev --workspace @spanish/backend",
+    "mobile": "npm run start --workspace @spanish/mobile",
+    "test": "npm run test --workspace @spanish/backend",
+    "build": "npm run build --workspace @spanish/backend && npm run build --workspace @spanish/shared",
+    "typecheck": "npm run typecheck --workspace @spanish/backend && npm run typecheck --workspace @spanish/mobile"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
